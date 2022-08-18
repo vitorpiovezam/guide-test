@@ -1,10 +1,10 @@
 describe('Quote', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:4200/')
+    cy.visit('https://localhost:4200/')
   });
 
   it('Should redirect to quote', () => {
-    cy.url().should('eq', 'http://localhost:4200/quote')
+    cy.url().should('eq', 'https://localhost:4200/quote')
   });
 
   it('Should load PETR4 quote', () => {

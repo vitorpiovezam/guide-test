@@ -6,7 +6,7 @@
     "start": "ng serve --ssl --proxy-config ./proxy.conf.json",
     "build": "ng build",
     "test": "ng test --browsers PhantomJS",
-    "test:e2e": "concurrently \"npm run start\" \"wait-on http://localhost:4200 && cypress run\""
+    "test:e2e": "concurrently \"npm run start\" \"wait-on https://localhost:4200 && cypress run\""
   },
   "private": true,
   "dependencies": {
@@ -40,6 +40,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "typescript": "~4.7.2"
+    "typescript": "~4.7.2",
+    "wait-on": "^6.0.1"
   }
 }

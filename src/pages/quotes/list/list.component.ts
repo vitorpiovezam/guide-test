@@ -25,6 +25,10 @@ import { FinanceService } from 'src/shared/services/finance.service';
         ></app-line-chart>
 
         <app-quote-view></app-quote-view>
+         
+        <p style="color: red">
+          * Os timestamps da API parecem estarem errados (todos apontam para 1970), nao encontrei a documentacao
+        </p>
       </ng-container>
 
       <ng-template #loadingTemplate>
@@ -48,7 +52,7 @@ export class QuoteListComponent implements OnInit, OnDestroy {
   constructor(
     private financeService: FinanceService,
     private dialog: MatDialog
-  ) { confirm('As datas vindas da API parecem erradas')}
+  ) { }
 
   ngOnInit(): void {
     this.initForm();
