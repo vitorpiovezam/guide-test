@@ -1,0 +1,8 @@
+{
+  "/v8/*": {
+    "target": "https://query2.finance.yahoo.com",
+    "secure": true,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}

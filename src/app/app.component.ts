@@ -2,9 +2,17 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass']
+  template: `
+    <header>
+      <app-navbar></app-navbar>
+    </header>
+
+    <main>
+      <router-outlet></router-outlet>
+    <main>
+  `,
+  styleUrls: [`app.component.sass`]
 })
 export class AppComponent {
-  title = 'guide-test';
+  title = 'spread-test';
 }
