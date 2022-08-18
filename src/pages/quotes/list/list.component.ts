@@ -19,7 +19,7 @@ import { FinanceService } from 'src/shared/services/finance.service';
     </header>
   
     <main>
-      <ng-container>
+      <ng-container *ngIf="!error; else errorTemplate">
         <app-line-chart
           [data]="chartData"
         ></app-line-chart>
@@ -31,8 +31,10 @@ import { FinanceService } from 'src/shared/services/finance.service';
         </p>
       </ng-container>
 
-      <ng-template #loadingTemplate>
-        <mat-spinner *ngIf="loading" diameter="40"></mat-spinner>
+      <ng-template #errorTemplate>
+         <p style="color: red">
+          Cotacao nao encontrada
+        </p>
       </ng-template>
     </main>
   `,
@@ -44,6 +46,7 @@ export class QuoteListComponent implements OnInit, OnDestroy {
 
 	chartData?: ChartConfiguration<'line'>['data'];
   loading = false;
+  error = false;
 
   form: FormGroup = new FormGroup({
     name: new FormControl('PETR4.SA')
@@ -69,14 +72,18 @@ export class QuoteListComponent implements OnInit, OnDestroy {
   getQuote(name: string) {
     this.loading = true;
 
-    this.financeService.getChartByName(name).subscribe(res => {
-      this.data = res;
-      this.loading = false;
+    this.financeService.getChartByName(name).subscribe(
+      res => {
+        this.data = res;
+        this.loading = false;
+        this.error = false;
 
-     
-      this.initGraph()
-    });
-    
+      
+        this.initGraph()
+      },
+      err => {
+        this.error = true;
+      });
   }
 
   initGraph() {
